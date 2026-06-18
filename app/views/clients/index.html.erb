@@ -1,0 +1,26 @@
+<h1>Clients</h1>
+
+<%= link_to "← Dashboard", root_path, class: "back-link" %>
+
+<% if @clients.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Firm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.name, client_path(client) %></td>
+          <td><%= client.email %></td>
+          <td><%= client.firm.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">No clients found.</p>
+<% end %>

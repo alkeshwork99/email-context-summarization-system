@@ -1,0 +1,62 @@
+# Bundler config
+/.bundle
+
+# Environment files
+.env
+.env.*
+
+# Logs and temp files
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# PID files
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Storage
+/storage/*
+!/storage/.keep
+
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Rails credentials keys
+/config/*.key
+
+# SQLite databases
+*.sqlite3
+*.sqlite3-journal
+
+# Coverage reports
+/coverage
+
+# Vendor bundle
+/vendor/bundle
+
+# Node modules
+/node_modules
+
+# Docker overrides
+docker-compose.override.yml
+
+# Editor files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Linux backup files
+*~
+
+# RubyMine
+*.iml
+
+# AI assistant files
+CLAUDE.md
+
+ARCHITECTURE.md

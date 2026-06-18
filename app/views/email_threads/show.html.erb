@@ -1,0 +1,25 @@
+<%= link_to "← #{@thread.client.name}", client_path(@thread.client), class: "back-link" %>
+
+<h1><%= @thread.subject %></h1>
+
+<p>Conversation ID: <%= @thread.conversation_id %></p>
+
+<hr>
+
+<h2>Messages</h2>
+
+<% if @messages.any? %>
+  <% @messages.each do |message| %>
+    <div class="message">
+      <div class="message-meta">
+        <strong>From:</strong> <%= message.from_email %> &bull;
+        <strong>Sent:</strong> <%= message.sent_at.strftime("%B %e, %Y %I:%M %p") %>
+      </div>
+      <%= simple_format(message.body) %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="empty-state">No messages.</p>
+<% end %>
+
+<%= link_to "View Summary", email_summary_web_path(@thread) %>

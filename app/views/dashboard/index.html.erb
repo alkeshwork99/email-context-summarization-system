@@ -1,0 +1,38 @@
+<h1>Email Context System</h1>
+
+<h2>
+  Welcome,
+  <%= current_accountant.name %>
+</h2>
+
+<p>Role: <strong><%= current_accountant.role %></strong></p>
+
+<hr>
+
+<h3>Available Features</h3>
+
+<ul>
+  <li><%= link_to "Clients", clients_path %></li>
+  <li>Threads &amp; Messages — accessible from a client's page</li>
+  <li>Summaries — accessible from a thread's page</li>
+  <% if current_accountant.superuser? %>
+    <li><%= link_to "Reports", global_report_path %></li>
+  <% elsif current_accountant.admin? %>
+    <li><%= link_to "Reports", firm_report_path %></li>
+  <% else %>
+    <li>Reports (not available)</li>
+  <% end %>
+</ul>
+
+<hr>
+
+<h3>Permissions</h3>
+
+<% if current_accountant.superuser? %>
+  <p>Can view global reports across firms.</p>
+<% elsif current_accountant.admin? %>
+  <p>Can view firm reports.</p>
+<% else %>
+  <p>Can view email conversations and summaries.</p>
+<% end %>
+

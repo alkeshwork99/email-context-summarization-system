@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Email Context System</title>
+    <link rel="stylesheet" href="/application.css">
+  </head>
+  <body>
+    <%= render "shared/navigation" %>
+    <main>
+      <%= render "shared/flash_messages" %>
+      <%= yield %>
+    </main>
+    <script>
+      document.addEventListener("submit", function(e) {
+        var btn = e.target.querySelector("input[type=submit], button[type=submit]");
+        if (!btn) return;
+        btn.disabled = true;
+        if (btn.tagName === "INPUT") { btn.value = "Processing..."; }
+        else { btn.textContent = "Processing..."; }
+      });
+    </script>
+  </body>
+</html>

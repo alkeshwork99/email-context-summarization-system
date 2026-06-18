@@ -1,0 +1,37 @@
+<%= link_to "← Thread", email_thread_path(@thread), class: "back-link" %>
+
+<h1>Summary</h1>
+
+<p><%= @summary[:summary] %></p>
+
+<h2>Actors</h2>
+
+<ul>
+  <% Array(@summary[:actors]).each do |actor| %>
+    <li><%= actor %></li>
+  <% end %>
+</ul>
+
+<h2>Concluded Discussions</h2>
+
+<ul>
+  <% Array(@summary[:concluded_discussions]).each do |item| %>
+    <li><%= item %></li>
+  <% end %>
+</ul>
+
+<h2>Open Action Items</h2>
+
+<% if Array(@summary[:open_action_items]).any? %>
+  <ul>
+    <% Array(@summary[:open_action_items]).each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="empty-state">No open action items.</p>
+<% end %>
+
+<hr>
+
+<%= button_to "Refresh Summary", refresh_email_summary_web_path(@thread), method: :post, class: "btn-primary" %>

@@ -1,0 +1,18 @@
+<% if current_accountant.present? %>
+  <nav>
+    <%= link_to "Dashboard", root_path %>
+    |
+    <%= link_to "Clients", clients_path %>
+    <% if current_accountant.superuser? %>
+      |
+      <%= link_to "Reports", global_report_path %>
+    <% elsif current_accountant.admin? %>
+      |
+      <%= link_to "Reports", firm_report_path %>
+    <% end %>
+    |
+    <span><%= button_to "Sign Out", sign_out_path, method: :delete %></span>
+  </nav>
+
+  <hr>
+<% end %>

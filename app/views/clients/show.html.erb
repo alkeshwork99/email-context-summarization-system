@@ -1,0 +1,36 @@
+<%= link_to "← Clients", clients_path, class: "back-link" %>
+
+<h1><%= @client.name %></h1>
+
+<p>Email: <%= @client.email %></p>
+<p>Phone: <%= @client.phone %></p>
+<p>Status: <%= @client.status %></p>
+
+<hr>
+
+<h2>Client Summary</h2>
+
+<p><%= link_to "View Client Summary", client_summary_web_path(@client), class: "btn-primary" %></p>
+
+<hr>
+
+<h2>Email Threads</h2>
+
+<% if @threads.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @threads.each do |thread| %>
+        <tr>
+          <td><%= link_to thread.subject, email_thread_path(thread) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="empty-state">No email threads.</p>
+<% end %>
